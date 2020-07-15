@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:project_doarti/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
 
 	final Function toggleView;
-	SignIn({ this.toggleView });
+	Register({ this.toggleView });
 
 	@override
-	_SignInState createState() => _SignInState();
+	_RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
 	final AuthService _auth = AuthService();
 
@@ -24,11 +24,11 @@ class _SignInState extends State<SignIn> {
 			appBar: AppBar(
 				backgroundColor: Colors.purple[400],
 				elevation: 0.0,
-				title: Text('Sign in to the app'),
+				title: Text('Register to the app'),
 				actions: <Widget>[
 					FlatButton.icon(
 						icon: Icon(Icons.person),
-						label: Text('Registrar'),
+						label: Text('Entrar'),
 						onPressed: () {
 							widget.toggleView();
 						}
@@ -59,7 +59,7 @@ class _SignInState extends State<SignIn> {
 							RaisedButton(
 								color: Colors.pink[400],
 								child: Text(
-									'Entrar',
+									'Registrar',
 									style: TextStyle(color: Colors.white),
 								),
 								onPressed: () async {
