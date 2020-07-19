@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project_doarti/models/doarti.dart';
+import 'package:project_doarti/models/user.dart';
 
 class DatabaseService {
 
@@ -29,6 +30,20 @@ class DatabaseService {
   Stream<List<Doarti>> get doarti {
   	return doartiCollection.snapshots()
   	.map(_doartiListFromSnapshot);
+  }
+
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+      uid: uid,
+      name: snapshot.data['name'],
+      sugars: snapshot.data['sugars'],
+      strength: snapshot.data['strength']
+    );
+  }
+
+  Stream<UserData> get userData {
+    return doartiCollection.document(uid).snapshots()
+      .map(_userDataFromSnapshot);
   }
 
 }
