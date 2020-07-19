@@ -9,20 +9,18 @@ class DatabaseService {
 
   final CollectionReference doartiCollection = Firestore.instance.collection('doarti');
 
-  Future<void> updateUserData(String sugars, String name, int strength) async {
+  Future<void> updateUserData(String books, String name) async {
     return await doartiCollection.document(uid).setData({
-      'sugars': sugars,
-      'name': name,
-      'strength': strength,
+      'livros': books,
+      'nome': name,
     });
   }
 
   List<Doarti> _doartiListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc){
       return Doarti(
-        name: doc.data['name'] ?? '',
-        strength: doc.data['strength'] ?? 0,
-        sugars: doc.data['sugars'] ?? '0'
+        name: doc.data['nome'] ?? '',
+        books: doc.data['livros'] ?? '0'
       );
     }).toList();
   }
@@ -35,9 +33,8 @@ class DatabaseService {
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
       uid: uid,
-      name: snapshot.data['name'],
-      sugars: snapshot.data['sugars'],
-      strength: snapshot.data['strength']
+      name: snapshot.data['nome'],
+      books: snapshot.data['livros'],
     );
   }
 

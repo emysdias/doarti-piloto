@@ -13,12 +13,10 @@ class SettingsForm extends StatefulWidget {
 class _SettingsFormState extends State<SettingsForm> {
 
   final _formKey = GlobalKey<FormState>();
-  final List<String> sugars = ['0', '1', '2', '3', '4'];
-  final List<int> strengths = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+  final List<String> books = ['0', '1', '2', '3', '4'];
 
   String _currentName;
-  String _currentSugars;
-  int _currentStrength;
+  String _currentBooks;
 
   @override
   Widget build(BuildContext context) {
@@ -47,26 +45,17 @@ class _SettingsFormState extends State<SettingsForm> {
           ),
           SizedBox(height: 10.0),
           DropdownButtonFormField(
-            value: _currentSugars ?? '0',
+            value: _currentBooks ?? '0',
             decoration: textInputDecoration,
-            items: sugars.map((sugar) {
+            items: books.map((book) {
               return DropdownMenuItem(
-                value: sugar,
-                child: Text('$sugar açúcares'),
+                value: book,
+                child: Text('$book livros'),
               );
             }).toList(),
-            onChanged: (val) => setState(() => _currentSugars = val ),
+            onChanged: (val) => setState(() => _currentBooks = val ),
           ),
           SizedBox(height: 10.0),
-          Slider(
-            value: (_currentStrength ?? 100).toDouble(),
-            activeColor: Colors.purple[_currentStrength ?? 100],
-            inactiveColor: Colors.purple[_currentStrength ?? 100],
-            min: 100.0,
-            max: 900.0,
-            divisions: 8,
-            onChanged: (val) => setState(() => _currentStrength = val.round()),
-          ),
           RaisedButton(
             color: Colors.pink[400],
             child: Text(
@@ -76,9 +65,8 @@ class _SettingsFormState extends State<SettingsForm> {
             onPressed: () async {
                     if(_formKey.currentState.validate()){
                       await DatabaseService(uid: user.uid).updateUserData(
-                        _currentSugars ?? snapshot.data.sugars, 
+                        _currentBooks ?? snapshot.data.books, 
                         _currentName ?? snapshot.data.name, 
-                        _currentStrength ?? snapshot.data.strength
                       );
                       Navigator.pop(context);
                     }
@@ -88,7 +76,7 @@ class _SettingsFormState extends State<SettingsForm> {
             ),
           );
         } else {
-          return Loading();
+          	return Loading();
         }
       }
     );

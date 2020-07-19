@@ -15,10 +15,10 @@ class DoartiTile extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 25.0,
-            backgroundColor: Colors.purple[doarti.strength],
+            backgroundColor: Colors.purple[500],
           ),
           title: Text(doarti.name),
-          subtitle: Text('Pegou ${doarti.sugars} açúcar(es)'),
+          subtitle: Text('Pegou ${doarti.books} livro(s)'),
         ),
       ),
     );

@@ -1,9 +1,8 @@
 class Doarti {
 
   final String name;
-  final String sugars;
-  final int strength;
+  final String books;
 
-  Doarti({ this.name, this.sugars, this.strength });
+  Doarti({ this.name, this.books });
 
 }

@@ -9,9 +9,8 @@ class UserData {
 
   final String uid;
   final String name;
-  final String sugars;
-  final int strength;
+  final String books;
 
-  UserData({ this.uid, this.sugars, this.strength, this.name });
+  UserData({ this.uid, this.books, this.name });
 
 }
